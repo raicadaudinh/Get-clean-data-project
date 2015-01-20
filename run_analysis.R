@@ -57,4 +57,7 @@ Z<- select(Y, label, subject, contains("mean()"), contains("std()"))
 ## I already did  the 3 and 4 step##
 ##3.Uses descriptive activity names to name the activities in the data set
 ##4.Appropriately labels the data set with descriptive variable names. ##
-new<- aggregate(Z[,3:68], by=list(Z$label), FUN=mean)
+##From the data set in step 4, creates a second, independent tidy data set with the average of each variable for each activity and each subject.##
+new<- aggregate(Z[,3:68], by=list(Z$label, Z$subject), FUN=mean)
+write.table(new,"tidydata.txt", row.names=FALSE, sep=",")
+
